@@ -61,7 +61,7 @@
 // #### Private Type(s) ########################################################
 // #############################################################################
 
-typedef struct TIM_Instance_Context
+typedef struct TIM_InstanceContext
 {
     TIM_Timestamp_t Timestamp;
 
@@ -69,7 +69,7 @@ typedef struct TIM_Instance_Context
     {
         RTC_t RTC;
     };
-} TIM_Instance_Context_t;
+} TIM_InstanceContext_t;
 
 // #############################################################################
 // #### Private Method(s) Prototype ############################################
@@ -121,7 +121,7 @@ TIM_Status_t TIM_Instance_Initialize( TIM_Instance_t * TIM_Instance )
         if ( TIM_Instance->Context == NULL )
         {
             RAM_Status_t RAM_Status = RAM_Status_Error;
-            if ( ( RAM_Status = RAM_Allocate( RAM_1, ( RAM_Reference_t * ) &TIM_Instance->Context, UTIL_SizeOf( TIM_Instance_Context_t ) ) ) != RAM_Status_Success )
+            if ( ( RAM_Status = RAM_Allocate( RAM_1, ( RAM_Reference_t * ) &TIM_Instance->Context, UTIL_SizeOf( TIM_InstanceContext_t ) ) ) != RAM_Status_Success )
             {
                 TIM_Status = TIM_Status_Error;
                 break;
